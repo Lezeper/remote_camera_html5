@@ -1,3 +1,5 @@
+<h2>What is it</h2>
+Remote Webcam using NodeJS, Html5, Javascript, Node-Webkit.
 <h2>Functions</h2>
 1. if the source user force exit, then close his camera and update source list.<br>
 2. source provider can accept or denied request.<br>
