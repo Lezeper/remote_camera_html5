@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Online Video Room</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+<body>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/socket.io.js"></script>
+
+    <div id="homepage_top">
+        <div id="homepage_username">
+            <span id="please_login">
+                Please login in first, just type your username:
+	            <input id="username" type="text" /><input type="button" value="submit" onclick="javascript:usernameSubmit()">
+            </span>
+        </div>
+        <div id="homepage_news"></div>
+        <div id="available_sources">Loading.....</div>
+        <div id="onlineClients_list"></div>
+        <div id="private_video_chat" style="display: none">
+            【private video chat】
+            Want to have private video communication with others? just type his username and wait for his response!
+            <input id="private_chat_username" type="text" /><input type="button" value="submit" onclick="javascript:private_connection()">
+            <div id="check_private_source_exist" style="display: none"></div>
+        </div>
+
+
+        <div id="connect_to_source" style="display:none">
+            【live video zone】
+            Watch a video with others together! You can type the available video source to connect:
+            <input id="source_username" type="text" /><input type="button" value="submit" onclick="javascript:connect_to_source()">
+            <div id="check_source_exist" style="display: none"></div>
+            <div>
+                <button id="wantStream">Or want to stream online?</button>
+
+                <div id="asSource" style="display: none">
+                    <div class='select'>
+                        <label for='videoSource'>Video source: </label><select id='videoSource'></select>
+                    </div>
+
+                    <div>
+                        <script>camera()</script>
+                        <input type="button" value="Open Video" onclick="javascript:open_video(1, '');"  />
+                        <input type="button" value="Close Video" onclick="javascript:open_video(0, '');"  />
+                    </div>
+                    <div id="notice_openCamera"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="homepage_body" style="display: none">
+        <canvas id="videoCanvas" width="640" height="480"></canvas>
+        <script type="text/javascript" src="jsmpg.js"></script>
+        <script type="text/javascript">
+            // Show loading notice
+            var canvas = document.getElementById('videoCanvas');
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#444';
+            ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
+
+            // Setup the WebSocket connection and start the player
+            //var WebSocket = require('ws')
+
+        </script>
+    </div>
+<div id="test"></div>
+<div>
+<input id="backToHomepage" style="display: none" type="button" value="Exit and back to homepage" onclick="javascript:backToHomepage()"  />
+</div>
+</body>
+</html>

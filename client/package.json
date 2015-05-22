@@ -1,0 +1,13 @@
+{
+  "name": "nw-demo",
+  "main": "index.html",
+  "single-instance": false,
+  "width": 100,
+  "height": 200,
+  "window": {
+	"title": "default",
+	"toolbar": false,
+	"width": 800,
+	"height": 800
+  }
+}

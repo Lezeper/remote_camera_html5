@@ -1,0 +1,11 @@
+body {
+    text-align: center;
+    margin-top: 10%;
+}
+
+#videoCanvas {
+    /* Always stretch the canvas to 640x480, regardless of its
+    internal size. */
+    width: 640px;
+    height: 480px;
+}

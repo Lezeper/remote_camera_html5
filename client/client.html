@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		var gui = require('nw.gui');
+		var win = gui.Window.get();
+		win.showDevTools();
+	</script>
+	<meta name="viewport" content="width=320, initial-scale=1"/>
+	<title>jsmpeg streaming</title>
+	<style type="text/css">
+		body {
+			background: #333;
+			text-align: center;
+			margin-top: 10%;
+		}
+		#videoCanvas {
+			/* Always stretch the canvas to 640x480, regardless of its
+			internal size. */
+			width: 640px;
+			height: 480px;
+		}
+	</style>
+	<script src="js/socket.io.js"></script>
+	<script src="js/client.js"></script>
+</head>
+<body>
+	<div id="submit_name_div">
+		Enter your name:
+		<input id="client_username" type="text" /><input type="button" value="submit" onclick="javascript:usernameSubmit()">
+	</div>
+
+	<div id="display_username_div"></div>
+	<div id="connect_to_source" style="display:none">
+		Enter the username you want to connect: 
+		<input id="source_username" type="text" /><input type="button" value="submit" onclick="javascript:connect_to_source()">
+	</div>
+	<div id="avaliable_sources"></div>
+	<!--
+	<script>
+		function connect(){
+			new_element=document.createElement("script");
+			new_element.setAttribute("type","text/javascript");
+			new_element.setAttribute("src","js/connect.js");// 在这里引入
+			document.body.appendChild(new_element);
+		}
+
+		function connect_to_source(){
+			new_element=document.createElement("script");
+			new_element.setAttribute("type","text/javascript");
+			new_element.setAttribute("src","js/connect.js");// 在这里引入
+			document.body.appendChild(new_element);
+			connect_source();
+		}
+	</script>
+	-->
+	<!-- The Canvas size specified here is the "initial" internal resolution. jsmpeg will
+		change this internal resolution to whatever the source provides. The size the
+		canvas is displayed on the website is dictated by the CSS style.
+	-->
+	<div id="displayVideo" style="display: none">
+		<canvas id="videoCanvas" width="640" height="480"></canvas>
+		<script type="text/javascript" src="jsmpg.js"></script>
+		<script type="text/javascript">
+			// Show loading notice
+			var canvas = document.getElementById('videoCanvas');
+			var ctx = canvas.getContext('2d');
+			ctx.fillStyle = '#444';
+			ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
+
+			// Setup the WebSocket connection and start the player
+			var client = new WebSocket( 'ws://localhost:8084/' );
+			var player = new jsmpeg(client, {canvas:canvas});
+		</script>
+	</div>
+</body>
+</html>
